@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Profile</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/profile.css">
+</head>
+<body>
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="#">Navbar</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+              
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                      <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/create/article">Write</a>
+                    </li>
+                   
+                   
+                  </ul>
+                  
+                
+                  <div class="dropdown">
+                      <button  type="button" id="dropdownMenuButton"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <p class="dropdown-item" style="text-align: center;cursor: pointer;background-color: whitesmoke;">Hello <%= user.username %>!</p>
+                        <a class="dropdown-item" href="/profile">Profile</a>
+                        <a class="dropdown-item" href="/stats">Stats</a>
+                        <a class="dropdown-item" href="/interests">Interests</a>
+                        <a class="dropdown-item" href="/logout">Logout</a>
+                      </div>
+                    </div>
+                 
+            
+                </div>
+              </nav>
+
+    
+    <div class="container">
+      <div id="header">
+
+        <div id="options">
+         <span onclick="userdetfn()" id="span1" class="headspans">User Details</span>
+         <span onclick="authfn()" id="span2" class="headspans">Your Articles</span>
+         <span onclick="bookfn()" id="span3" class="headspans">Bookmarks</span>
+         <span onclick="likedfn()" id="span4" class="headspans">Liked Articles</span>
+        </div>
+
+      </div>
+      <div id="userdetails">
+        <div id="maindet">
+        <div id="usertop">
+          <div>
+      <span style="display:none" id="dploc"><%= user.dp %></span>
+      <img src="<%= user.dp %>" id="profdp" alt="dp"><br><br>
+    </div>
+    <div id="followers" onclick="showfollowers()" >
+  <h5 style="text-align: center"><%= user.followers.length %></h5>  
+<p>followers</p>
+    </div>
+    <div id="following" onclick="showfollowing()">
+    <h5 style="text-align: center" id="nofollowing"><%= user.following.length %></h5>
+ <p>following</p>
+    </div>
+    </div>
+      
+      <label for="username">Username</label><br>
+      <input type="text" class="form-control" name="username" id="username" onkeyup="savefn()"  value="<%= user.username %>"><br>
+      <label for="about">About</label><br>
+      <textarea name="about" class="form-control" id="about" cols="100" onkeyup="savefn()" rows="2"><%= user.about %></textarea><br>
+      <label for="">Email Id</label>
+      <input type="text" class="form-control" name="email" id="email" onkeyup="savefn()" value="<%= user.email %>">
+      <div id="savechanges">
+       </div>
+        
+
+    </div>
+   
+    <div id="followerslist">
+
+
+    </div>
+
+    <div id="followinglist">
+
+
+    </div>
+     
+  </div>
+   <div id="userart" class="midbody">
+
+
+   </div>
+
+
+    <div id="bookmarks" class="midbody">
+
+
+
+    </div>
+
+    <div id="liked" class="midbody">
+
+
+
+    </div>
+
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+     
+<script src="/js/profile.js"></script>
+
+</script>
+</body>
+</html>

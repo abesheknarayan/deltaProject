@@ -1,0 +1,57 @@
+body{
+    padding-top:70px;
+}
+
+#interests{
+    display: flex;
+    flex-wrap: wrap;
+
+}
+.card{
+    width:280px;
+    height: 280px;
+    margin:20px;
+}
+
+.fa:hover {
+    color:rgba(0,0,0,0.5);
+    
+}
+
+.fa{
+    color:black;
+ 
+    display: inline-block;
+    padding:10px;
+
+
+    
+}
+.card-title{
+    padding: 20px;
+    
+    display: inline-block;
+    
+}
+
+.carddet{
+    display: flex;
+    justify-content: space-between;
+}
+.card-img-bottom{
+    height: 203px;
+}
+
+#dropdownMenuButton{
+    
+    width: 40px;
+    height: 40px;
+    background-size:cover;
+    border: 0;
+    border-radius: 50%; 
+}
+
+.dropdown{
+    margin:0 20px;
+    margin-right: 120px;
+}

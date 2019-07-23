@@ -1,0 +1,27 @@
+#avatar1{
+    background-image: url("../images/avatar/a1.jpg");
+    width: 120px;
+    height: 140px;
+    border-radius: 50%;
+    background-position-x: 7px;
+    border:0;
+
+}
+#avatar2{
+    background-image: url("../images/avatar/a2.jpg");
+    width: 120px;
+    height: 140px;
+    border-radius: 50%;
+    border:0;
+
+
+
+}
+
+
+input{
+    margin:20px 0;
+    
+}
+
+

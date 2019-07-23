@@ -1,0 +1,113 @@
+body{
+    padding-top:60px;
+}
+#responses{
+    display: none;
+}
+.liked{
+    color:red;
+    
+}
+.unliked{
+    color:black;
+
+}
+.likes{
+    padding-right: 10px;
+    padding-left:5px; 
+}
+.fa-bookmark{
+    color:grey
+}
+#sharebtns{
+
+    float: right;
+    margin-right: 30px;
+   
+}
+#sharebtns a{
+    padding:10px;
+}
+#author{
+    margin-top:30px;
+    padding:20px;
+    border-top:2px solid rgba(0,0,0,0.2);
+}
+
+#authdet{
+    padding:20px;
+    display: flex;
+    flex-wrap:wrap; 
+}
+#authabt{
+    color:rgba(0,0,0,0.5);
+}
+#authdetdiv
+{
+    padding-top:10px;
+    cursor: pointer;
+}
+
+.share:hover{
+    color:rgba(0,0,0,0.5)
+}
+.dp{
+    width:70px;
+    height: 75px;
+    border-radius:50%; 
+    margin-right:10px;
+}
+#viewcom{
+    text-align: center;
+}
+.share{
+    color: black;
+}
+#followbtn{
+    flex-grow:1; 
+}
+.addedcom{
+    border-bottom: 2px solid rgba(0,0,0,0.5);
+    margin:10px 0px;
+}
+#responses{
+    padding:0 10px;
+}
+#likeshare{
+    padding-top:20px; 
+}
+#dropdownMenuButton{
+    
+    width: 40px;
+    height: 40px;
+    background-size:cover;
+    border: 0;
+    border-radius: 50%; 
+}
+
+.dropdown{
+    margin:0 20px;
+    margin-right: 120px;
+}
+
+#atitle{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 50px;
+    font-weight: 500;
+}
+#ashort{
+font-size: 20px;
+color:rgba(0,0,0,0.5);
+
+}
+
+#aimage{
+    width: 100%;
+    height: 500px;
+}
+
+#abody{
+    padding-top:50px; 
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 25px;
+}

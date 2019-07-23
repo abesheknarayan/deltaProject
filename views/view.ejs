@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Article</title>
+  
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/view.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+
+</head>
+<body>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.3&appId=2365916507010131&autoLogAppEvents=1"></script>
+
+
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse"  data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/create/article">Write</a>
+          </li>
+         
+         
+        </ul>
+       
+        <div class="dropdown">
+            <button  type="button" id="dropdownMenuButton"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <p class="dropdown-item" style="text-align: center;cursor: pointer;background-color: whitesmoke;">Hello <%= user.username %>!</p>
+              <a class="dropdown-item" href="/profile">Profile</a>
+              <a class="dropdown-item" href="/stats">Stats</a>
+              <a class="dropdown-item" href="/interests">Interests</a>
+              <a class="dropdown-item" href="/logout">Logout</a>
+            </div>
+          </div>
+       
+  
+      </div>
+    </nav>
+    <div class="container">
+      <p id="aid" style="display: none"><%= art.id %></p>
+      <h2 id="atitle"><%= art.title %></h1>
+        <p id="ashort"><%= art.short %></p>
+            <% if(typeof art.img.src!="undefined")  { %>
+             <img src="<%=art.img.src %> " id="aimage"  alt="article image">
+        <% } %>
+        <% if(typeof art.img.src=="undefined")  { %>
+         <p>image not available</p>
+     <% } %>
+         
+          
+         <div id="abody">
+           
+     
+         </div>
+         <div id="likeshare">
+         <% var t=0 %>
+         <% for(var i=0;i< user.likedart.length;i++){ %>
+           <% if(user.likedart[i]==art.id){ %>
+              <% t=1; %>
+             <%  break; %>
+
+          <% } %>
+      <%   }    %>
+     <%  if(t==0){ %>
+      <i class="fa  fa-heart-o unliked" id="<%= art.id %>"  aria-hidden="true" onclick="likedfn(this)"></i><span class="likes" ><%= art.likes %></span>
+     <% } %>
+    <% if(t==1){ %>
+      <i class="fa  fa-heart liked" id="<%= art.id %>"  aria-hidden="true" onclick="likedfn(this)"></i><span class="likes" ><%= art.likes %></span>
+    <% } %>
+    <% var t=0 %>
+    <% for(var i=0;i< user.bookmarks.length;i++){ %>
+      <% if(user.bookmarks[i]==art.id){ %>
+         <% t=1; %>
+        <%  break; %>
+
+     <% } %>
+ <%   }    %>
+ <%  if(t==0){ %>
+  <i class="fa fa-bookmark-o " id="<%= art.id %>" onclick="bookart(this)"></i>
+ <% } %>
+<% if(t==1){ %>
+  <i class="fa fa-bookmark" id="<%= art.id %>" onclick="bookart(this)"></i>
+<% } %>
+<div id="sharebtns">
+
+    <span style="display:none" id="dploc"><%= user.dp %></span>
+    <a target="_blank"  href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.google.com%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore fa fa-facebook-square fa-2x share"></a>
+
+    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="fa fa-twitter fa-2x share" data-show-count="false"></a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+</div>
+
+</div>
+         <div id="author">
+
+
+          <h4>Written by</h4>
+          <div id="authdet">
+            
+            <div>
+             <% if(author.dp.length>0){ %>
+              <img src="<%= author.dp %>" class="dp" alt="male">
+             <% } %>
+           
+              
+           
+          </div>
+          <div id="authdetdiv" >
+            <div id="<%= author.id %>"  onclick="showprof(this)">
+          <span style="padding-right:10px; "><b><%= author.username %></b></span>
+          <p id="authabt"><%= author.about %></p>
+        </div>
+          </div>
+        
+          <% var t=0 %>
+          <% for(var i=0;i< user.following.length;i++){ %>
+            <% if(user.following[i].user==art.createdUser){ %>
+               <% t=1; %>
+              <%  break; %>
+      
+           <% } %>
+       <%   }    %>
+       <div id="followbtn">
+       <%  if(t==0){ %>
+        <button style="float: right" class="btn btn-outline-success fno" id="<%= art.createdUser %>" onclick="followfn(this)">Follow</button>
+       <% } %>
+      <% if(t==1){ %>
+        <button style="float: right" class="btn btn-success fyes" id="<%= art.createdUser %>" onclick="followfn(this)">Following</button>
+      <% } %>
+    </div>
+       
+        </div>
+         </div>
+             <div id="viewcom">
+         <button class="btn btn-outline-info" style="margin: 10px 0px;"  onclick="viewres(this)">View comments</button>
+        </div>
+         <div id="responses" >
+
+
+          
+          <textarea name="cmt" id="cmtinp" class="form-control" cols="100" rows="2" placeholder="Type comment here.."></textarea>
+          <button id="<%= art.id %>" style="margin: 10px 0px;" class="btn btn-secondary" onclick="addcom(this)">Add comment</button>
+          <div id="comments">
+
+          </div>
+        </div>
+        </div>     
+         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+         
+         <script src="/js/view.js"></script>
+</body>
+</html>

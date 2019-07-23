@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Explore Profile</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/exploreprof.css">
+</head>
+<body>
+        
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="#">Navbar</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+              
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                      <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/create/article">Write</a>
+                    </li>
+                   
+                   
+                  </ul>
+                  
+                
+                  <div class="dropdown">
+                      <button  type="button" id="dropdownMenuButton"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <p class="dropdown-item" style="text-align: center;cursor: pointer;background-color: whitesmoke;">Hello <%= user.username %>!</p>
+                        <a class="dropdown-item" href="/profile">Profile</a>
+                        <a class="dropdown-item" href="/stats">Stats</a>
+                        <a class="dropdown-item" href="/interests">Interests</a>
+                        <a class="dropdown-item" href="/logout">Logout</a>
+                      </div>
+                    </div>
+                 
+            
+                </div>
+              </nav>
+              <span style="display:none" id="dploc"><%= user.dp %></span>
+
+              <div class="container">
+                  <div id="head"> 
+              <div id="topdet">
+                <div id="userdet">
+                    <div>
+                  <img src="<%= puser.dp %>" id="pdp" alt="dp">
+                
+</div>
+</div>
+<div id="maindet">
+
+        <h5 style="text-align: center"><%= puser.articles.length %></h5>  
+        <p>Articles</p>
+</div>
+<div id="followers">
+        <h5 style="text-align: center" id=folno><%= puser.followers.length %></h5>  
+        <p style="text-align: center">Followers</p>
+        <% var t=0 %>
+        <% for(var i=0;i< user.following.length;i++){ %>
+          <% if(user.following[i].user==puser.username){ %>
+             <% t=1; %>
+            <%  break; %>
+    
+         <% } %>
+     <%   }    %>
+     <div id="followbtn">
+     <%  if(t==0){ %>
+      <button style="float: right" class="btn btn-outline-success fno" id="<%= puser.username %>" onclick="followfn(this)">Follow</button>
+     <% } %>
+    <% if(t==1){ %>
+      <button style="float: right" class="btn btn-success fyes" id="<%= puser.username %>" onclick="followfn(this)">Following</button>
+    <% } %>
+     </div>
+
+
+</div>
+
+<div id="following">
+        <h5 style="text-align: center"><%= puser.following.length %></h5>  
+        <p>Following</p>
+
+</div>
+
+
+</div>
+<div>
+    <div>
+            <p ><b><%= puser.username %></b></p>
+<p ><%= puser.about %></p>
+</div>
+</div>
+
+</div>
+
+<div id="art">
+<span id="puserid" style="display: none"><%= puser.id %></span>
+
+
+  <%  if(puser.articles.length>0){ %>
+    <% puser.articles.forEach(function(art){ %>
+      <%   if(art.img!=undefined){ %>
+         <div>
+         <div class="card art">
+          <div class="detdiv">
+            <div id="<%= art.id %>" onclick="viewfn(this)">
+          <h4><%= art.title %></h4>
+          <p>By <%= art.createdUser %></p>
+          <p><%= art.short %></p>
+          <span class="artdate"><%= art.Date %></span>
+          <span class="artdate"><%= art.readtime %> min read</span>
+
+          
+         </div>
+            </div>
+            <div class="artimgdiv" >
+            <img class="artimg"  src="<%= art.img.src %>"   alt="article image">
+           </div>
+       
+        </div>
+         
+       </div>
+    <% } %>
+        <%   if(art.img==undefined){ %>
+        
+           <div>
+           <div class="card art">
+            <div class="detdiv">
+              <div id="<%= art.id %>"  onclick="viewfn(this)">
+            <h4><%= art.title %></h4>
+            <p>By <%= art.createdUser %></p>
+            <p><%= art.short %></p>
+            <span class="artdate"><%= art.Date %></span>
+            <span class="artdate"><%= art.readtime %> min read</span>
+           </div>
+              </div>
+              <div class="artimgdiv" >
+              <img class="artimg"  src="/images/login.jpeg"   alt="article image">
+             </div>
+         
+          </div>
+           
+         </div>
+           
+
+        <% } %>
+          
+         <% }) %>
+   <% } %>
+   <% if(puser.articles.length==0){ %>
+     
+     <div class="nodatamsg">
+     <h3>No articles written by <%= puser.username %>!</h3>
+   
+     </div>
+     
+     
+  <% } %>
+
+
+</div>
+
+</div>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="/js/exploreprof.js"></script>
+</body>
+</html>

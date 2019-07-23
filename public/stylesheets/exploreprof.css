@@ -1,0 +1,83 @@
+body{
+    padding-top:70px;
+}
+#dropdownMenuButton{
+    
+    width: 40px;
+    height: 40px;
+    background-size:cover;
+    border: 0;
+    border-radius: 50%; 
+}
+
+.dropdown{
+    margin:0 20px;
+    margin-right: 120px;
+}
+
+#pdp{
+    height: 80px;
+    width: 70px;
+    border-radius: 50%;
+    margin:20px;
+}
+#userdet{
+    display: flex;
+}
+
+#maindet{
+    margin:20px;
+    margin-top:30px;
+   
+}
+
+#topdet{
+    display: flex;
+    justify-content: space-between;
+}
+
+#followers,#following{
+    margin-top: 30px;
+}
+
+#head{
+    border-bottom: 2px solid rgba(0,0,0,0.5);
+}
+
+.art{
+    display: flex;
+    max-width: 560px;
+    min-height: 120px;
+    justify-content: space-between;
+    flex-direction: row;
+  
+}
+.detdiv{
+    margin-right: 20px;
+    padding: 10px;
+    float: left;
+}
+.artimg{
+    
+    height: 130px;
+    width:130px;
+}
+.card{
+    margin: 20px auto; 
+    border: none;
+
+    
+}
+
+.artdate{
+    margin-right: 20px;
+    color:rgba(0,00,00,0.5);
+}
+
+.nodatamsg{
+    text-align: center;
+    margin-top:50px;
+}
+.nodatamsg h3{
+    color:rgba(0,00,00,0.5);
+}

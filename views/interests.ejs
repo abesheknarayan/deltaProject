@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Customize Interests</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/stylesheets/interests.css">
+</head>
+<body>
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="#">Navbar</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+              
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                      <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/create/article">Write</a>
+                    </li>
+                   
+                   
+                  </ul>
+                  
+                  <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                  </form>
+                  <div class="dropdown">
+                      <button  type="button" id="dropdownMenuButton"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <p class="dropdown-item" style="text-align: center;cursor: pointer;background-color: whitesmoke;">Hello <%= user.username %>!</p>
+                        <a class="dropdown-item" href="/profile">Profile</a>
+                        <a class="dropdown-item" href="/stats">Stats</a>
+                        <a class="dropdown-item" href="/interests">Interests</a>
+                        <a class="dropdown-item" href="/logout">Logout</a>
+                      </div>
+                    </div>
+                 
+            
+                </div>
+              </nav>
+
+    <div class="container">
+            <span style="display:none" id="dploc"><%= user.dp %></span>
+    <h3>Customize Interests Page</h3>
+    <a href="/home">home</a>
+    <h3>Almost done!!</h3>
+    <p>Please select your interests so that we can give what you like..</p>
+    <form action="/home">
+    <button class="btn btn-primary">Finished Adding Interests</button>
+    </form>
+    <div id="interests">
+
+
+   <div class="card">
+       <div class="carddet">
+    <p class="card-title">Sports</p>
+    <% var t=0 %>
+    <% for(var i=0;i< user.interests.length;i++){ %>
+      <% if(user.interests[i]=="sports"){ %>
+         <% t=1; %>
+        <%  break; %>
+
+     <% } %>
+ <%   }    %>
+<%  if(t==0){ %>
+    <i class="fa fa-3x fa-plus-circle" id="isports" onclick="addfn(this)"></i>
+<% } %>
+<% if(t==1){ %>
+    <i class="fa fa-3x fa-check-circle" id="isports" onclick="addfn(this)"></i>
+<% } %>
+   
+</div>
+    <img class="card-img-bottom" src="/images/sports.jpeg" alt="">
+   </div>
+
+
+   <div class="card">
+        <div class="carddet">
+     <p class="card-title">Art & Culture</p>
+     <% var t=0 %>
+     <% for(var i=0;i< user.interests.length;i++){ %>
+       <% if(user.interests[i]=="art"){ %>
+          <% t=1; %>
+         <%  break; %>
+ 
+      <% } %>
+  <%   }    %>
+ <%  if(t==0){ %>
+     <i class="fa fa-3x fa-plus-circle" id="iart" onclick="addfn(this)"></i>
+ <% } %>
+ <% if(t==1){ %>
+     <i class="fa fa-3x fa-check-circle" id="iart" onclick="addfn(this)"></i>
+ <% } %>
+    
+   
+    
+ </div>
+     <img class="card-img-bottom" src="/images/art.jpeg"  alt="">
+    </div>
+   
+
+
+   <div class="card">
+        <div class="carddet">
+     <p class="card-title">Technology</p>
+     <% var t=0 %>
+     <% for(var i=0;i< user.interests.length;i++){ %>
+       <% if(user.interests[i]=="tech"){ %>
+          <% t=1; %>
+         <%  break; %>
+ 
+      <% } %>
+  <%   }    %>
+ <%  if(t==0){ %>
+     <i class="fa fa-3x fa-plus-circle" id="itech" onclick="addfn(this)"></i>
+ <% } %>
+ <% if(t==1){ %>
+     <i class="fa fa-3x fa-check-circle" id="itech" onclick="addfn(this)"></i>
+ <% } %>
+    
+    
+ </div>
+     <img class="card-img-bottom" src="/images/tech.jpeg" alt="">
+    </div>
+
+
+
+   <div class="card">
+        <div class="carddet">
+     <p class="card-title">Business</p>
+     <% var t=0 %>
+     <% for(var i=0;i< user.interests.length;i++){ %>
+       <% if(user.interests[i]=="business"){ %>
+          <% t=1; %>
+         <%  break; %>
+ 
+      <% } %>
+  <%   }    %>
+ <%  if(t==0){ %>
+     <i class="fa fa-3x fa-plus-circle" id="ibusiness" onclick="addfn(this)"></i>
+ <% } %>
+ <% if(t==1){ %>
+     <i class="fa fa-3x fa-check-circle" id="ibusiness" onclick="addfn(this)"></i>
+ <% } %>
+    
+     
+ </div>
+     <img class="card-img-bottom" src="/images/business.jpeg" alt="">
+    </div>
+
+
+    <div class="card">
+            <div class="carddet">
+         <p class="card-title">Social Media</p>
+         <% var t=0 %>
+         <% for(var i=0;i< user.interests.length;i++){ %>
+           <% if(user.interests[i]=="social"){ %>
+              <% t=1; %>
+             <%  break; %>
+     
+          <% } %>
+      <%   }    %>
+     <%  if(t==0){ %>
+         <i class="fa fa-3x fa-plus-circle" id="isocial" onclick="addfn(this)"></i>
+     <% } %>
+     <% if(t==1){ %>
+         <i class="fa fa-3x fa-check-circle" id="isocial" onclick="addfn(this)"></i>
+     <% } %>
+        
+         
+     </div>
+         <img class="card-img-bottom" src="/images/social.jpeg" alt="">
+        </div>
+    
+    
+
+   <div class="card">
+        <div class="carddet">
+     <p class="card-title">Books</p>
+     <% var t=0 %>
+     <% for(var i=0;i< user.interests.length;i++){ %>
+       <% if(user.interests[i]=="books"){ %>
+          <% t=1; %>
+         <%  break; %>
+ 
+      <% } %>
+  <%   }    %>
+ <%  if(t==0){ %>
+     <i class="fa fa-3x fa-plus-circle" id="ibooks" onclick="addfn(this)"></i>
+ <% } %>
+ <% if(t==1){ %>
+     <i class="fa fa-3x fa-check-circle" id="ibooks" onclick="addfn(this)"></i>
+ <% } %>
+    
+ </div>
+     <img class="card-img-bottom" src="/images/books.jpeg" alt="">
+    </div>
+ 
+
+   <div class="card">
+        <div class="carddet">
+     <p class="card-title">Fiction</p>
+     <% var t=0 %>
+     <% for(var i=0;i< user.interests.length;i++){ %>
+       <% if(user.interests[i]=="fiction"){ %>
+          <% t=1; %>
+         <%  break; %>
+ 
+      <% } %>
+  <%   }    %>
+ <%  if(t==0){ %>
+     <i class="fa fa-3x fa-plus-circle" id="ifiction" onclick="addfn(this)"></i>
+ <% } %>
+ <% if(t==1){ %>
+     <i class="fa fa-3x fa-check-circle" id="ifiction" onclick="addfn(this)"></i>
+ <% } %>
+    
+   
+ </div>
+     <img class="card-img-bottom" src="/images/fiction.jpeg" alt="">
+    </div>
+  
+
+   <div class="card">
+        <div class="carddet">
+     <p class="card-title">Fashion</p>
+     <% var t=0 %>
+     <% for(var i=0;i< user.interests.length;i++){ %>
+       <% if(user.interests[i]=="fashion"){ %>
+          <% t=1; %>
+         <%  break; %>
+ 
+      <% } %>
+  <%   }    %>
+ <%  if(t==0){ %>
+     <i class="fa fa-3x fa-plus-circle" id="ifashion" onclick="addfn(this)"></i>
+ <% } %>
+ <% if(t==1){ %>
+     <i class="fa fa-3x fa-check-circle" id="ifashion" onclick="addfn(this)"></i>
+ <% } %>
+    
+     
+   </div>
+     <img class="card-img-bottom" src="/images/fashion.jpeg" alt="">
+    </div>
+   
+
+   <div class="card">
+        <div class="carddet">
+     <p class="card-title">Startups</p>
+     <% var t=0 %>
+     <% for(var i=0;i< user.interests.length;i++){ %>
+       <% if(user.interests[i]=="startup"){ %>
+          <% t=1; %>
+         <%  break; %>
+ 
+      <% } %>
+  <%   }    %>
+ <%  if(t==0){ %>
+     <i class="fa fa-3x fa-plus-circle" id="istartup" onclick="addfn(this)"></i>
+ <% } %>
+ <% if(t==1){ %>
+     <i class="fa fa-3x fa-check-circle" id="istartup" onclick="addfn(this)"></i>
+ <% } %>
+    
+    
+ </div>
+     <img class="card-img-bottom" src="/images/startup.jpeg" alt="">
+    </div>
+
+
+    </div>
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="/js/interests.js"></script>
+</body>
+</html>
